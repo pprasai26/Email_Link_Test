@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phishing Simulation</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --accent-2: #34d399;
+      --danger: #f87171;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #0ea5e9;
+        --accent-2: #10b981;
+        --danger: #ef4444;
+        --shadow: 0 12px 24px rgba(2, 6, 23, 0.08);
+      }
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(34,211,238,0.08), transparent 60%),
+                  radial-gradient(1000px 600px at 80% 20%, rgba(16,185,129,0.08), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+    .card {
+      width: min(720px, 96vw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) , var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+    }
+    .badge svg { width: 16px; height: 16px; }
+    h1 {
+      margin: 16px 0 8px;
+      font-size: clamp(28px, 4.2vw, 36px);
+      line-height: 1.15;
+    }
+    .lede { color: var(--muted); margin-bottom: 20px; }
+    .panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px dashed rgba(255,255,255,0.12);
+      padding: 16px;
+      border-radius: 12px;
+      margin: 16px 0 24px;
+    }
+    .panel strong { color: var(--text); }
+    .tips {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 8px 0 16px 0;
+    }
+    .tip {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.02);
+    }
+    details {
+      margin: 10px 0 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02);
+    }
+    details > summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      padding: 12px 16px;
+      transition: transform .06s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .btn-primary {
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: #00111a;
+      box-shadow: 0 10px 22px rgba(56,189,248,0.25);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .footer {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <span class="badge" aria-hidden="true">
+      <!-- Shield/check icon -->
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3l7 3v5c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M8.5 12.5l2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Phishing Awareness
+    </span>
+
+    <h1 id="title">This was a phishing simulation.</h1>
+    <p class="lede">No credentials were collected. This page exists to help you identify and report suspicious emails in the future.</p>
+
+    <section class="panel" aria-labelledby="what-happened">
+      <h2 id="what-happened" style="margin:0 0 8px 0;">What happened?</h2>
+      <p>
+        You clicked a link in a simulated phishing email used for training purposes. The goal is to practice recognizing red flags
+        in a low‑risk environment. <strong>Nothing was captured</strong>: no usernames, passwords, cookies, or personal data.
+      </p>
+    </section>
+
+    <section aria-labelledby="how-to-spot">
+      <h2 id="how-to-spot" style="margin:14px 0 8px 0;">How to spot it next time</h2>
+      <div class="tips">
+        <div class="tip"><strong>1. Inspect the sender:</strong> Look for misspelled domains or unexpected aliases. Example: <code>it-support@unlversity.edu</code> (the “l” is actually an “I”).</div>
+        <div class="tip"><strong>2. Hover before you click:</strong> Check the real destination URL matches the site you expect.</div>
+        <div class="tip"><strong>3. Watch the tone:</strong> Urgency, threats, or “immediate action required” are common social‑engineering tactics.</div>
+        <div class="tip"><strong>4. Unexpected attachments/links:</strong> Confirm with the sender via a known-good channel before opening.</div>
+        <div class="tip"><strong>5. MFA and passwords:</strong> Never enter credentials after following a link from an email; instead, navigate directly to the official site.</div>
+      </div>
+
+      <details>
+        <summary>See the subtle clues used in the simulation</summary>
+        <ul>
+          <li>A generic greeting and unusual sender address.</li>
+          <li>A call-to-action button with a non-university URL.</li>
+          <li>Time pressure (“review pending”).</li>
+        </ul>
+      </details>
+    </section>
+
+    <div class="actions" role="group" aria-label="Next steps">
+      <a class="btn btn-primary" href="#" onclick="window.history.length ? window.history.back() : window.close();" role="button">Go Back</a>
+      <a class="btn btn-ghost" href="mailto:security@example.edu?subject=Report%20Phishing%20Simulation&body=I%20received%20a%20phishing%20simulation%20email.%0D%0A%0D%0AObserved%20details%3A%0D%0A-%20Sender%20address%3A%20%0D%0A-%20Subject%3A%20%0D%0A-%20Link%3A%20%0D%0A%0D%0AAction%20taken%3A%20Clicked%20link%20%5BYes%2FNo%5D%0D%0AReported%20to%20IT%3A%20%5BYes%2FNo%5D" role="button">Report this simulation</a>
+    </div>
+
+    <p class="footer">
+      Training-only page. © <span id="year"></span> Your University • No tracking • No data collection
+    </p>
+  </main>
+
+  <script>
+    // Minimal script just to set the year. No analytics or storage.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
